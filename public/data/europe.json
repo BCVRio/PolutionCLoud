@@ -1,0 +1,13 @@
+{
+  "bbox": {
+    "lonMin": -12,
+    "lonMax": 32,
+    "latMin": 34,
+    "latMax": 62
+  },
+  "land": 190470,
+  "coast": 25983,
+  "maskW": 440,
+  "maskH": 280,
+  "source": "Natural Earth 1:50m land via world-atlas"
+}

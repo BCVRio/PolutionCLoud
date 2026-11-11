@@ -1,0 +1,26 @@
+{
+  "port": 8080,
+
+  "api": {
+    "airQualityBase": "https://air-quality-api.open-meteo.com/v1/air-quality",
+    "weatherBase": "https://api.open-meteo.com/v1/forecast",
+    "key": "",
+    "domains": "cams_europe",
+    "pollMinutes": 60,
+    "pastDays": 2,
+    "forecastDays": 1,
+    "timeoutMs": 20000
+  },
+
+  "osc": {
+    "enabled": true,
+    "host": "127.0.0.1",
+    "port": 9000,
+    "rateHz": 10,
+    "addressRoot": "/commonair"
+  },
+
+  "frameRateHz": 10,
+  "cycleSeconds": 90,
+  "replayDefaultSpeed": 60
+}

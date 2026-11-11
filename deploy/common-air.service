@@ -1,0 +1,19 @@
+# Linux auto-start (systemd). Copy to /etc/systemd/system/, edit the paths and user, then:
+#   sudo systemctl daemon-reload && sudo systemctl enable --now common-air
+[Unit]
+Description=Common Air data service and render pages
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=commonair
+WorkingDirectory=/opt/common-air
+ExecStart=/usr/bin/node server/index.js --serve-dist
+Restart=always
+RestartSec=5
+Environment=PORT=8080
+# Environment=OPEN_METEO_API_KEY=...
+
+[Install]
+WantedBy=multi-user.target

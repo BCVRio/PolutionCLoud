@@ -1,0 +1,62 @@
+@import '@fontsource/space-grotesk/400.css';
+@import '@fontsource/space-grotesk/500.css';
+@import '@fontsource/jetbrains-mono/400.css';
+@import '@fontsource/jetbrains-mono/500.css';
+
+:root {
+  --bg: #06080B;
+  --label: #C9D1DA;
+  --label2: #9AA6B2;
+  --no2: #FF8A3D; --pm25: #EDE6D6; --pm10: #B8AE98; --o3: #4DA3FF;
+  --line: #1A2430;
+  --mono: 'JetBrains Mono', ui-monospace, monospace;
+  --sans: 'Space Grotesk', system-ui, sans-serif;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; background: var(--bg); color: var(--label); font-family: var(--sans); overflow: hidden; }
+#app { position: fixed; inset: 0; }
+canvas.stage { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+
+/* Small mono labels over the artwork. Numbers are never larger than this. */
+.labels { position: absolute; inset: 0; pointer-events: none; font-family: var(--mono); font-size: 11px; letter-spacing: 0.02em; }
+.label { position: absolute; transform: translate(-50%, 0); white-space: nowrap; color: var(--label); opacity: 0.85; text-align: center; line-height: 1.35; }
+.label .name { font-family: var(--sans); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; }
+.label .val { color: var(--label2); font-size: 10px; }
+.label.active .name { color: #fff; }
+.corner { position: absolute; font-family: var(--mono); font-size: 10px; color: var(--label2); line-height: 1.5; opacity: 0.8; }
+.corner.bl { left: 18px; bottom: 14px; }
+.corner.br { right: 18px; bottom: 14px; text-align: right; }
+.corner.tl { left: 18px; top: 14px; }
+.corner.tr { right: 18px; top: 14px; text-align: right; }
+.corner .title { font-family: var(--sans); font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--label); }
+.corner .big { font-size: 15px; color: var(--label); }
+.k-no2 { color: var(--no2); } .k-pm25 { color: var(--pm25); } .k-pm10 { color: var(--pm10); } .k-o3 { color: var(--o3); }
+
+/* Control and index pages: plain, legible, no artwork. */
+body.page { overflow: auto; }
+.page #app { position: static; padding: 28px 32px 60px; max-width: 1180px; margin: 0 auto; }
+.page h1 { font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; font-size: 15px; margin: 0 0 4px; }
+.page h2 { font-weight: 500; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--label2); margin: 26px 0 10px; border-bottom: 1px solid var(--line); padding-bottom: 6px; }
+.page p, .page li { color: var(--label2); font-size: 13px; line-height: 1.55; }
+.page a { color: var(--label); }
+.page code, .mono { font-family: var(--mono); font-size: 12px; }
+.row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin: 6px 0; }
+.page button, .page select, .page input[type=number] { font: 12px var(--mono); background: #0E131A; color: var(--label); border: 1px solid #243040; border-radius: 3px; padding: 6px 10px; cursor: pointer; }
+.page button.on { background: #1D2B3B; border-color: #4A6076; color: #fff; }
+.page button:hover { border-color: #4A6076; }
+.page input[type=range] { width: 220px; accent-color: #9AA6B2; }
+.slider { display: grid; grid-template-columns: 110px 220px 90px; gap: 10px; align-items: center; font-family: var(--mono); font-size: 12px; margin: 4px 0; }
+.slider .v { color: var(--label2); }
+table.cities { border-collapse: collapse; font-family: var(--mono); font-size: 11px; width: 100%; }
+table.cities th { text-align: right; color: var(--label2); font-weight: 400; padding: 4px 8px; border-bottom: 1px solid var(--line); }
+table.cities td { text-align: right; padding: 3px 8px; border-bottom: 1px solid #0E131A; }
+table.cities td:first-child, table.cities th:first-child { text-align: left; }
+table.cities tr.active td { color: #fff; background: #0E131A; }
+.meter { display: grid; grid-template-columns: 120px 1fr 50px; gap: 10px; align-items: center; font-family: var(--mono); font-size: 11px; margin: 3px 0; }
+.meter .bar { height: 6px; background: #0E131A; border: 1px solid #1A2430; position: relative; }
+.meter .bar i { position: absolute; left: 0; top: 0; bottom: 0; background: #9AA6B2; }
+.status { font-family: var(--mono); font-size: 11px; color: var(--label2); line-height: 1.7; }
+.status b { color: var(--label); font-weight: 500; }
+.links a { display: inline-block; margin: 4px 10px 4px 0; font-family: var(--mono); font-size: 12px; }
+.note { font-size: 11px; color: var(--label2); }
+.overlay-btn { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); font: 12px var(--mono); background: #0E131A; color: var(--label); border: 1px solid #4A6076; padding: 12px 20px; cursor: pointer; letter-spacing: 0.08em; }

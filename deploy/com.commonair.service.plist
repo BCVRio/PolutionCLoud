@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- macOS auto-start (launchd). Copy to ~/Library/LaunchAgents/, edit the paths, then:
+     launchctl load ~/Library/LaunchAgents/com.commonair.service.plist -->
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key><string>com.commonair.service</string>
+  <key>ProgramArguments</key>
+  <array><string>/usr/local/bin/node</string><string>server/index.js</string><string>--serve-dist</string></array>
+  <key>WorkingDirectory</key><string>/Users/you/common-air</string>
+  <key>RunAtLoad</key><true/>
+  <key>KeepAlive</key><true/>
+  <key>StandardOutPath</key><string>/tmp/common-air.log</string>
+  <key>StandardErrorPath</key><string>/tmp/common-air.log</string>
+</dict>
+</plist>
